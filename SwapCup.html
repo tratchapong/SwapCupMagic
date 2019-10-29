@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>swap cup magic</title>
+</head>
+<body>
+<BR>
+<div>
+<input type="text" id="cupnum" value="Coin in cup no: " onclick="changeText(this)">
+<input type="text" id="sequence" value="Input sequence here" onclick="changeText(this)">
+<input type="button" onclick="calc()" value="calc">
+</div>
+
+<div>
+<h2 id="result">
+ ANSWER
+</h2>
+</div>
+
+<script>
+var cup = [0,0,0];
+var seq = document.getElementById("sequence").value;
+
+function changeText(obj) {
+ document.getElementById("result").innerHTML = obj.value;
+ obj.value = null;
+}
+
+function swap(x,y) {
+ var temp = cup[x];
+ cup[x] = cup[y];
+ cup[y] = temp;
+}
+
+function calc() {
+cupnum = document.getElementById("cupnum").value;
+cup[cupnum-1] = 1;
+seq = document.getElementById("sequence").value;
+document.getElementById("result").innerHTML = seq;
+console.log("Start with : ", cup);
+
+ for(let i=0; i<seq.length; i++) {
+	if(seq[i] == "A") { swap(0,1); }
+	if(seq[i] == "B") { swap(0,2); }
+	if(seq[i] == "C") { swap(1,2); }
+	console.log(seq[i], cup);
+ } 
+
+}
+</script>
+</body>
+</html>
